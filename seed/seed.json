@@ -322,16 +322,297 @@
 							"style": "normal",
 							"_key": "k14",
 							"children": [
-								{
-									"_type": "span",
-									"_key": "k15",
-									"text": "Sell you software for commission. Lock you into tools you can't leave. Quote hourly and watch the meter run. If we're not the right fit, we'll say so and point you somewhere better."
-								}
-							]
-						}
-					]
-				}
+							{
+								"_type": "span",
+								"_key": "k15",
+								"text": "Sell you software for commission. Lock you into tools you can't leave. Quote hourly and watch the meter run. If we're not the right fit, we'll say so and point you somewhere better."
+							}
+						]
+					}
+				]
 			}
+		},
+		{
+			"id": "page-business-automations",
+			"slug": "business-automations",
+			"status": "published",
+			"data": {
+				"title": "Business Automations",
+				"content": [
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a0",
+						"children": [
+							{
+								"_type": "span",
+								"_key": "a1",
+								"text": "We connect the tools you already use — CRM, email, calendar, accounting — so repetitive work happens automatically and accurately, every time. Edit this page in the admin to change what visitors see."
+							}
+						]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "a2",
+						"children": [{ "_type": "span", "_key": "a3", "text": "Sound familiar?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "a4",
+						"children": [{ "_type": "span", "_key": "a5", "text": "Leads sit in your inbox for days before anyone replies." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "a6",
+						"children": [{ "_type": "span", "_key": "a7", "text": "You copy-paste the same details between apps, daily." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "a8",
+						"children": [{ "_type": "span", "_key": "a9", "text": "Invoices go out late — and reminders later still." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "a10",
+						"children": [{ "_type": "span", "_key": "a11", "text": "Nobody knows the real pipeline number without asking around." }]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "a12",
+						"children": [{ "_type": "span", "_key": "a13", "text": "Automations that pay for themselves" }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a14",
+						"children": [{ "_type": "span", "_key": "a15", "text": "Lead capture & follow-up" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a16",
+						"children": [{ "_type": "span", "_key": "a17", "text": "Every enquiry from your site, inbox, and socials lands in one pipeline — acknowledged instantly and nurtured with timed follow-ups until it converts." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a18",
+						"children": [{ "_type": "span", "_key": "a19", "text": "Quotes, invoices & reminders" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a20",
+						"children": [{ "_type": "span", "_key": "a21", "text": "Generate quotes in one click, send invoices on schedule, and let polite automatic reminders chase late payers — with you approving anything sensitive." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a22",
+						"children": [{ "_type": "span", "_key": "a23", "text": "Booking & scheduling" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a24",
+						"children": [{ "_type": "span", "_key": "a25", "text": "Self-serve calendars with confirmations, rescheduling, and reminders. Full diaries, empty inboxes, fewer no-shows." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a26",
+						"children": [{ "_type": "span", "_key": "a27", "text": "CRM that runs itself" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a28",
+						"children": [{ "_type": "span", "_key": "a29", "text": "Cleanup, enrichment, status updates, and task creation — your customer record stays current without manual data entry." }]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "a30",
+						"children": [{ "_type": "span", "_key": "a31", "text": "From chaos to autopilot" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a32",
+						"children": [{ "_type": "span", "_key": "a33", "text": "1. Audit — a free 30-minute call plus a look at your tools. You keep the written recommendations either way. 2. Map — we diagram each workflow, agree what done looks like, then quote a fixed price. 3. Build — implemented in your accounts, tested with real data, with training your team can replay." }]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "a34",
+						"children": [{ "_type": "span", "_key": "a35", "text": "Automation FAQ" }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a36",
+						"children": [{ "_type": "span", "_key": "a37", "text": "Do I need to buy new software?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a38",
+						"children": [{ "_type": "span", "_key": "a39", "text": "Usually not. We start with what you have and only suggest new tools when they clearly pay for themselves — and we never take commissions on them." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a40",
+						"children": [{ "_type": "span", "_key": "a41", "text": "Who owns the automations?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a42",
+						"children": [{ "_type": "span", "_key": "a43", "text": "You do. Everything is built in your accounts, documented in plain language, and handed over with training." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "a44",
+						"children": [{ "_type": "span", "_key": "a45", "text": "How much does it cost?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "a46",
+						"children": [{ "_type": "span", "_key": "a47", "text": "Fixed quotes after the free audit. Small single-workflow builds start in the hundreds; full pipeline overhauls are scoped individually." }]
+					}
+				]
+			}
+		},
+		{
+			"id": "page-website-design",
+			"slug": "website-design",
+			"status": "published",
+			"data": {
+				"title": "Website Design",
+				"content": [
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "w0",
+						"children": [
+							{
+								"_type": "span",
+								"_key": "w1",
+								"text": "A fast, clear website that tells visitors what you do, why to trust you, and what to do next — then gets out of the way. Edit this page in the admin to change what visitors see."
+							}
+						]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "w2",
+						"children": [{ "_type": "span", "_key": "w3", "text": "Everything a small-business site needs" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "w4",
+						"children": [{ "_type": "span", "_key": "w5", "text": "Design that converts — clear messaging and obvious next steps." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "w6",
+						"children": [{ "_type": "span", "_key": "w7", "text": "Speed as a feature — static-first builds that load in a blink on phones." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "w8",
+						"children": [{ "_type": "span", "_key": "w9", "text": "SEO-ready foundations — metadata, sitemaps, and local-business markup from day one." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "w10",
+						"children": [{ "_type": "span", "_key": "w11", "text": "Easy to update — if you can use email, you can update your site." }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"listItem": "bullet",
+						"_key": "w12",
+						"children": [{ "_type": "span", "_key": "w13", "text": "No plugin treadmill — modern static builds with managed hosting that just stays up." }]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "w14",
+						"children": [{ "_type": "span", "_key": "w15", "text": "Live in weeks, not quarters" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "w16",
+						"children": [{ "_type": "span", "_key": "w17", "text": "1. Shape — a working session on your offer and customers, plus a homepage mockup for approval. 2. Build — design, copy polish, and development on a shareable preview link, with two revision rounds. 3. Launch & care — domain, hosting, and analytics handled, training included, care plan optional." }]
+					},
+					{
+						"_type": "block",
+						"style": "h2",
+						"_key": "w18",
+						"children": [{ "_type": "span", "_key": "w19", "text": "Website FAQ" }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "w20",
+						"children": [{ "_type": "span", "_key": "w21", "text": "Can I update the site myself?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "w22",
+						"children": [{ "_type": "span", "_key": "w23", "text": "Yes — text, images, pages, and posts through a simple admin panel, with training included." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "w24",
+						"children": [{ "_type": "span", "_key": "w25", "text": "Will my site rank on Google?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "w26",
+						"children": [{ "_type": "span", "_key": "w27", "text": "We ship every technical SEO foundation and local-business markup. Rankings also need content and reviews — we'll tell you honestly what that takes." }]
+					},
+					{
+						"_type": "block",
+						"style": "h3",
+						"_key": "w28",
+						"children": [{ "_type": "span", "_key": "w29", "text": "How much does a website cost?" }]
+					},
+					{
+						"_type": "block",
+						"style": "normal",
+						"_key": "w30",
+						"children": [{ "_type": "span", "_key": "w31", "text": "Fixed quotes after a free discovery call. You'll know the price before we start." }]
+					}
+				]
+			}
+		}
 		]
 	}
 }

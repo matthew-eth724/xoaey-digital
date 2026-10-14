@@ -1,0 +1,271 @@
+---
+import {
+	getEmDashEntry,
+	getSeoMeta,
+	decodeSlug,
+	getSiteSettings,
+} from "emdash";
+import { PortableText } from "emdash/ui";
+import Base from "../../layouts/Base.astro";
+import { resolveStarterSiteIdentity } from "../../utils/site-identity";
+
+const slug = decodeSlug(Astro.params.slug);
+
+interface ServiceMeta {
+	eyebrow: string;
+	heroHtml: string;
+	lede: string;
+	ctaPrimary: string;
+	ctaSecondaryLabel: string;
+	ctaSecondaryUrl: string;
+	seoDescription: string;
+}
+
+const META: Record<string, ServiceMeta> = {
+	"business-automations": {
+		eyebrow: "Service · Business automations",
+		heroHtml: "Stop doing work a <em>workflow</em> should do.",
+		lede: "We connect the tools you already use — CRM, email, calendar, accounting — so repetitive work happens automatically and accurately, every time.",
+		ctaPrimary: "Get a free automation audit",
+		ctaSecondaryLabel: "See website design",
+		ctaSecondaryUrl: "/services/website-design",
+		seoDescription:
+			"Xoaey Digital automates lead follow-up, invoicing, bookings, and reporting for small businesses — fixed price, no jargon.",
+	},
+	"website-design": {
+		eyebrow: "Service · Website design",
+		heroHtml: "Websites that <em>win customers</em>, not awards.",
+		lede: "A fast, clear website that tells visitors what you do, why to trust you, and what to do next — then gets out of the way. Built on modern tooling, easy for you to edit.",
+		ctaPrimary: "Request a quote",
+		ctaSecondaryLabel: "See business automations",
+		ctaSecondaryUrl: "/services/business-automations",
+		seoDescription:
+			"Xoaey Digital designs fast, conversion-focused, SEO-ready websites for small businesses — easy to update, no plugin treadmill.",
+	},
+};
+
+const meta = slug ? META[slug] : undefined;
+const { entry, cacheHint } = slug
+	? await getEmDashEntry("pages", slug)
+	: { entry: null, cacheHint: undefined };
+
+if (!entry && !meta) {
+	return Astro.redirect("/404");
+}
+
+if (Astro.cache?.enabled && cacheHint) Astro.cache.set(cacheHint);
+const { siteTitle } = resolveStarterSiteIdentity(await getSiteSettings());
+
+const pageTitle = entry?.data.title ?? meta?.heroHtml.replace(/<[^>]+>/g, "") ?? slug;
+const seo = entry
+	? getSeoMeta(entry, {
+			siteTitle,
+			siteUrl: Astro.url.origin,
+			path: Astro.url.pathname.replace(/\/$/, ""),
+		})
+	: {
+			title: `${pageTitle} — ${siteTitle}`,
+			description: meta!.seoDescription,
+			ogTitle: pageTitle,
+			ogDescription: meta!.seoDescription,
+			ogImage: null,
+			canonical: null,
+		};
+---
+
+<Base
+	title={seo.title}
+	pageTitle={seo.ogTitle}
+	description={seo.description}
+	canonical={seo.canonical}
+	image={seo.ogImage}
+	content={
+		entry ? { collection: "pages", id: entry.data.id, slug } : undefined
+	}
+>
+	<section class="xd-hero">
+		<div class="xd-container">
+			<span class="xd-eyebrow">{meta?.eyebrow ?? "Service"}</span>
+			{
+				entry ? (
+					<h1 {...entry.edit.title}>{entry.data.title}</h1>
+				) : (
+					<h1 set:html={meta!.heroHtml} />
+				)
+			}
+			{meta && <p class="xd-lede">{meta.lede}</p>}
+			<div class="xd-btn-row">
+				<a href="/contact" class="xd-btn">{meta?.ctaPrimary ?? "Contact us"}</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="xd-section">
+		<div class="xd-container">
+			{
+				entry ? (
+					<div class="xd-prose">
+						<PortableText value={entry.data.content} />
+					</div>
+				) : slug === "business-automations" ? (
+					<>
+						<span class="xd-eyebrow">Symptoms we fix</span>
+						<h2>Sound familiar?</h2>
+						<ul class="xd-checklist">
+							<li>Leads sit in your inbox for days before anyone replies.</li>
+							<li>You copy-paste the same details between apps, daily.</li>
+							<li>Invoices go out late — and reminders later still.</li>
+							<li>Nobody knows the real pipeline number without asking around.</li>
+							<li>Evenings disappear into admin instead of the actual business.</li>
+						</ul>
+						<span class="xd-eyebrow">What you get</span>
+						<h2>Automations that pay for themselves.</h2>
+						<div class="xd-grid-2">
+							<div class="xd-card">
+								<h3>Lead capture &amp; follow-up</h3>
+								<p>Every enquiry from your site, inbox, and socials lands in one pipeline — acknowledged instantly and nurtured with timed follow-ups until it converts.</p>
+							</div>
+							<div class="xd-card">
+								<h3>Quotes, invoices &amp; reminders</h3>
+								<p>Generate quotes in one click, send invoices on schedule, and let polite automatic reminders chase late payers — with you approving anything sensitive.</p>
+							</div>
+							<div class="xd-card">
+								<h3>Booking &amp; scheduling</h3>
+								<p>Self-serve calendars with confirmations, rescheduling, and reminders. Full diaries, empty inboxes, fewer no-shows.</p>
+							</div>
+							<div class="xd-card">
+								<h3>CRM that runs itself</h3>
+								<p>Cleanup, enrichment, status updates, and task creation — your customer record stays current without manual data entry.</p>
+							</div>
+						</div>
+						<span class="xd-eyebrow">Process</span>
+						<h2>From chaos to autopilot in four steps.</h2>
+						<div class="xd-grid-3">
+							<div class="xd-card">
+								<span class="xd-step-num">1</span>
+								<h3>Audit</h3>
+								<p>Free 30-minute call plus a look at your tools. You get a written list of what we'd automate first — yours to keep, even if we never work together.</p>
+							</div>
+							<div class="xd-card">
+								<span class="xd-step-num">2</span>
+								<h3>Map</h3>
+								<p>We diagram each workflow and agree what “done” looks like, then quote a fixed price. No hourly meters running.</p>
+							</div>
+							<div class="xd-card">
+								<span class="xd-step-num">3</span>
+								<h3>Build</h3>
+								<p>We implement in your accounts (you own everything), test with real data, and train your team on video calls you can replay.</p>
+							</div>
+						</div>
+						<span class="xd-eyebrow">Questions</span>
+						<h2>Automation FAQ.</h2>
+						<div class="xd-faq">
+							<details>
+								<summary>Do I need to buy new software?</summary>
+								<p>Usually not. We start with what you have and only suggest new tools when they clearly pay for themselves — and we never take commissions on them.</p>
+							</details>
+							<details>
+								<summary>Who owns the automations?</summary>
+								<p>You do. Everything is built in your accounts, documented in plain language, and handed over with training. If we part ways, it all keeps running.</p>
+							</details>
+							<details>
+								<summary>What if something breaks?</summary>
+								<p>Every workflow includes error alerts — to you and optionally to us on a care plan. Most fixes are small config tweaks, not rebuilds.</p>
+							</details>
+							<details>
+								<summary>How much does it cost?</summary>
+								<p>Fixed quotes after the free audit. Small single-workflow builds start in the hundreds; full pipeline overhauls are scoped individually. You'll know the price before we start.</p>
+							</details>
+						</div>
+					</>
+				) : (
+					<>
+						<span class="xd-eyebrow">What you get</span>
+						<h2>Everything a small-business site needs. Nothing it doesn't.</h2>
+						<div class="xd-grid-3">
+							<div class="xd-card">
+								<h3>Design that converts</h3>
+								<p>Clear messaging, obvious next steps, and trust signals placed where visitors actually look — structured around your best enquiry source.</p>
+							</div>
+							<div class="xd-card">
+								<h3>Speed as a feature</h3>
+								<p>Static-first builds that load in a blink on phones and poor connections — better rankings, fewer bounces, more enquiries.</p>
+							</div>
+							<div class="xd-card">
+								<h3>SEO-ready foundations</h3>
+								<p>Sensible URLs, metadata, sitemaps, and local-business structured data from day one, editable in the CMS.</p>
+							</div>
+							<div class="xd-card">
+								<h3>Easy to update</h3>
+								<p>A friendly admin panel for text, images, and pages. If you can use email, you can update your site — with training videos included.</p>
+							</div>
+							<div class="xd-card">
+								<h3>Accessible by default</h3>
+								<p>Readable contrast, keyboard navigation, and semantic markup — so nobody is locked out of becoming your customer.</p>
+							</div>
+							<div class="xd-card">
+								<h3>No plugin treadmill</h3>
+								<p>No weekly update roulette or security-patch anxiety. Modern static builds with managed hosting that just stays up.</p>
+							</div>
+						</div>
+						<span class="xd-eyebrow">Process</span>
+						<h2>Live in weeks, not quarters.</h2>
+						<div class="xd-grid-3">
+							<div class="xd-card">
+								<span class="xd-step-num">1</span>
+								<h3>Shape</h3>
+								<p>A working session on your offer, customers, and the one action the site must drive. Sitemap and homepage mockup for approval.</p>
+							</div>
+							<div class="xd-card">
+								<span class="xd-step-num">2</span>
+								<h3>Build</h3>
+								<p>Design, copy polish, and development on a preview link you can share with anyone. Two revision rounds included.</p>
+							</div>
+							<div class="xd-card">
+								<span class="xd-step-num">3</span>
+								<h3>Launch &amp; care</h3>
+								<p>We handle domain, hosting, and analytics setup, train you on the CMS, and offer a care plan for updates and small improvements.</p>
+							</div>
+						</div>
+						<span class="xd-eyebrow">Questions</span>
+						<h2>Website FAQ.</h2>
+						<div class="xd-faq">
+							<details>
+								<summary>Can I update the site myself?</summary>
+								<p>Yes — text, images, pages, and blog posts through a simple admin panel, with training included. Bigger changes are a quick email away on a care plan.</p>
+							</details>
+							<details>
+								<summary>Will my site rank on Google?</summary>
+								<p>We ship every technical SEO foundation and local-business markup. Rankings also need content and reviews — we'll tell you honestly what that takes for your market.</p>
+							</details>
+							<details>
+								<summary>What about my existing site and domain?</summary>
+								<p>We migrate your content, keep your domain and email untouched, and set up redirects so you don't lose existing rankings.</p>
+							</details>
+							<details>
+								<summary>How much does a website cost?</summary>
+								<p>Fixed quotes after a free discovery call. Most small-business sites land in a clear, published range — you'll know the price before we start.</p>
+							</details>
+						</div>
+					</>
+				)
+			}
+		</div>
+	</section>
+
+	{
+		meta && (
+			<section class="xd-section xd-section-dark">
+				<div class="xd-container">
+					<h2>Ready to start?</h2>
+					<div class="xd-btn-row">
+						<a href="/contact" class="xd-btn">{meta.ctaPrimary}</a>
+						<a href={meta.ctaSecondaryUrl} class="xd-btn xd-btn-ghost">
+							{meta.ctaSecondaryLabel}
+						</a>
+					</div>
+				</div>
+			</section>
+		)
+	}
+</Base>

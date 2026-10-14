@@ -187,7 +187,7 @@ a:hover {
 .xd-btn {
 	display: inline-block;
 	background: var(--xd-accent);
-	color: var(--xd-accent-text);
+	color: #000;
 	font-weight: 700;
 	text-decoration: none;
 	padding: 0.8rem 1.6rem;
@@ -198,7 +198,7 @@ a:hover {
 }
 
 .xd-btn:hover {
-	color: var(--xd-accent-text);
+	color: #000;
 	filter: brightness(0.94);
 }
 
@@ -211,6 +211,20 @@ a:hover {
 .xd-btn-ghost:hover {
 	color: var(--xd-accent);
 	border-color: var(--xd-accent);
+	filter: none;
+}
+
+/* Solid dark variant: for use on light backgrounds where accent must not sit */
+.xd-btn-dark {
+	background: var(--xd-primary);
+	border-color: var(--xd-primary);
+	color: var(--xd-accent);
+}
+
+.xd-btn-dark:hover {
+	color: var(--xd-accent);
+	background: #1e1e1e;
+	border-color: #1e1e1e;
 	filter: none;
 }
 
