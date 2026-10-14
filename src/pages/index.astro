@@ -1,0 +1,168 @@
+---
+import { getSiteSettings } from "emdash";
+import Base from "../layouts/Base.astro";
+import { resolveStarterSiteIdentity } from "../utils/site-identity";
+
+const { siteTitle, siteTagline } = resolveStarterSiteIdentity(
+	await getSiteSettings(),
+);
+---
+
+<Base title={siteTitle} description={siteTagline}>
+	<section class="xd-hero">
+		<div class="xd-container">
+			<span class="xd-eyebrow">Business automations · Website design</span>
+			<h1>
+				Your business, on <em>autopilot</em>. Your website, pulling its
+				weight.
+			</h1>
+			<p class="xd-lede">
+				Xoaey Digital helps small businesses reclaim their week: we
+				automate the repetitive work eating your margins, and design
+				fast websites that turn visitors into enquiries.
+			</p>
+			<div class="xd-btn-row">
+				<a href="/contact" class="xd-btn">Get a free automation audit</a>
+				<a href="/services/business-automations" class="xd-btn xd-btn-ghost">
+					Explore services
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="xd-section">
+		<div class="xd-container">
+			<span class="xd-eyebrow">What we do</span>
+			<h2>Two services. One goal: more time, more customers.</h2>
+			<div class="xd-grid-2">
+				<div class="xd-card">
+					<h3>Business automations</h3>
+					<p>
+						Lead follow-ups, invoicing, bookings, reporting — the busywork
+						that fills your evenings. We connect your tools so work flows
+						without you pushing it.
+					</p>
+					<ul>
+						<li>CRM setup, cleanup &amp; integrations</li>
+						<li>Automatic lead capture &amp; follow-up</li>
+						<li>Invoices, reminders &amp; payment nudges</li>
+					</ul>
+					<a href="/services/business-automations">How automation works →</a>
+				</div>
+				<div class="xd-card">
+					<h3>Website design</h3>
+					<p>
+						Lightning-fast, search-friendly websites built on modern
+						tooling — designed to convert, easy for you to update, with
+						no plugin maintenance treadmill.
+					</p>
+					<ul>
+						<li>Conversion-focused design &amp; copy structure</li>
+						<li>Fast, accessible, SEO-ready builds</li>
+						<li>Care plans &amp; content updates</li>
+					</ul>
+					<a href="/services/website-design">How web projects work →</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="xd-section xd-section-dark">
+		<div class="xd-container">
+			<span class="xd-eyebrow">How we work</span>
+			<h2>Simple, transparent, no jargon.</h2>
+			<div class="xd-grid-3">
+				<div class="xd-card">
+					<span class="xd-step-num">1</span>
+					<h3>Discover</h3>
+					<p>
+						A free 30-minute call. We map where your time goes and what
+						a win looks like — then quote a fixed price.
+					</p>
+				</div>
+				<div class="xd-card">
+					<span class="xd-step-num">2</span>
+					<h3>Design</h3>
+					<p>
+						You approve the workflow or the website mockup before we
+						build. No surprises, no scope creep.
+					</p>
+				</div>
+				<div class="xd-card">
+					<span class="xd-step-num">3</span>
+					<h3>Build &amp; support</h3>
+					<p>
+						We ship, train your team, and stick around. Most clients stay
+						on a light care plan.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="xd-section">
+		<div class="xd-container">
+			<span class="xd-eyebrow">Automation wins</span>
+			<h2>Where our clients get their hours back.</h2>
+			<div class="xd-grid-3">
+				<div class="xd-card">
+					<h3>Leads that never go cold</h3>
+					<p>
+						Every enquiry captured, acknowledged in seconds, and
+						followed up automatically until it converts or closes.
+					</p>
+				</div>
+				<div class="xd-card">
+					<h3>Invoices that chase themselves</h3>
+					<p>
+						Quotes, invoices, and polite reminders go out on schedule —
+						so cash flow stops depending on your memory.
+					</p>
+				</div>
+				<div class="xd-card">
+					<h3>Bookings without the back-and-forth</h3>
+					<p>
+						Self-serve scheduling with confirmations and reminders cuts
+						no-shows and admin to near zero.
+					</p>
+				</div>
+				<div class="xd-card">
+					<h3>One source of truth</h3>
+					<p>
+						Your CRM, inbox, calendar, and spreadsheets finally agree
+						with each other — synced in real time.
+					</p>
+				</div>
+				<div class="xd-card">
+					<h3>Instant answers, 24/7</h3>
+					<p>
+						AI-assisted chat and FAQs handle common questions on your
+						site while you sleep.
+					</p>
+				</div>
+				<div class="xd-card">
+					<h3>Numbers without spreadsheets</h3>
+					<p>
+						Weekly dashboards show pipeline, revenue, and workload at a
+						glance — no manual reporting.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="xd-section xd-section-dark">
+		<div class="xd-container">
+			<span class="xd-eyebrow">Ready when you are</span>
+			<h2>Tell us where your week disappears.</h2>
+			<p class="xd-lede">
+				Send a two-minute enquiry and get a free automation audit: three
+				concrete things we'd fix first, with honest pricing.
+			</p>
+			<div class="xd-btn-row">
+				<a href="/contact" class="xd-btn">Contact Xoaey Digital</a>
+				<a href="/about" class="xd-btn xd-btn-ghost">More about us</a>
+			</div>
+		</div>
+	</section>
+</Base>

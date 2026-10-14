@@ -1,0 +1,161 @@
+---
+import Base from "../layouts/Base.astro";
+
+const sent = Astro.url.searchParams.get("sent") === "1";
+const error = Astro.url.searchParams.get("error") ?? null;
+---
+
+<Base
+	title="Contact"
+	description="Contact Xoaey Digital for business automations and website design — get a free automation audit."
+>
+	<section class="xd-hero">
+		<div class="xd-container">
+			<span class="xd-eyebrow">Contact</span>
+			<h1>
+				Tell us where your <em>week disappears</em>.
+			</h1>
+			<p class="xd-lede">
+				Two minutes now saves you hours every week. We reply within one
+				business day with next steps and honest pricing.
+			</p>
+		</div>
+	</section>
+
+	<section class="xd-section">
+		<div class="xd-container">
+			{
+				sent && (
+					<div class="xd-alert xd-alert-success" role="status">
+						Thanks — your enquiry is in. We'll reply within one
+						business day.
+					</div>
+				)
+			}
+			{
+				error && (
+					<div class="xd-alert" role="alert">
+						Something went wrong sending your enquiry. Please try again
+						or email us directly.
+					</div>
+				)
+			}
+			<form
+				id="contact-form"
+				class="xd-form"
+				action="/api/contact"
+				method="post"
+				novalidate
+			>
+				<div class="xd-field">
+					<label for="cf-name">Your name *</label>
+					<input
+						id="cf-name"
+						name="name"
+						type="text"
+						required
+						autocomplete="name"
+						maxlength="120"
+					/>
+				</div>
+				<div class="xd-field">
+					<label for="cf-email">Email *</label>
+					<input
+						id="cf-email"
+						name="email"
+						type="email"
+						required
+						autocomplete="email"
+						maxlength="200"
+					/>
+				</div>
+				<div class="xd-field">
+					<label for="cf-company">Company</label>
+					<input
+						id="cf-company"
+						name="company"
+						type="text"
+						autocomplete="organization"
+						maxlength="160"
+					/>
+				</div>
+				<div class="xd-field">
+					<label for="cf-service">What do you need? *</label>
+					<select id="cf-service" name="service" required>
+						<option value="">Choose one…</option>
+						<option value="automation">Business automation</option>
+						<option value="website">Website design</option>
+						<option value="both">Both / not sure yet</option>
+					</select>
+				</div>
+				<div class="xd-field">
+					<label for="cf-budget">Budget range</label>
+					<select id="cf-budget" name="budget">
+						<option value="">Prefer not to say</option>
+						<option value="under-1k">Under $1,000</option>
+						<option value="1-3k">$1,000 – $3,000</option>
+						<option value="3-10k">$3,000 – $10,000</option>
+						<option value="10k-plus">$10,000+</option>
+					</select>
+				</div>
+				<div class="xd-field">
+					<label for="cf-message">What should we know? *</label>
+					<textarea
+						id="cf-message"
+						name="message"
+						required
+						maxlength="5000"
+						placeholder="What eats your time? What tools do you use? What would a win look like?"
+					></textarea>
+				</div>
+				<div class="xd-honeypot" aria-hidden="true">
+					<label for="cf-website">Leave this empty</label>
+					<input
+						id="cf-website"
+						name="website"
+						type="text"
+						tabindex="-1"
+						autocomplete="off"
+					/>
+				</div>
+				<div>
+					<button type="submit" class="xd-btn" id="cf-submit">
+						Send enquiry
+					</button>
+				</div>
+				<p class="xd-form-note" id="cf-status" role="status">
+					We store your enquiry securely and never share it. No
+					newsletter, no spam — one reply from a human.
+				</p>
+			</form>
+		</div>
+	</section>
+</Base>
+
+<script>
+	const form = document.getElementById("contact-form");
+	const status = document.getElementById("cf-status");
+	const submit = document.getElementById("cf-submit");
+	form?.addEventListener("submit", async (event) => {
+		event.preventDefault();
+		if (!(form instanceof HTMLFormElement)) return;
+		if (submit instanceof HTMLButtonElement) {
+			submit.disabled = true;
+			submit.textContent = "Sending…";
+		}
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				body: new FormData(form),
+				headers: { Accept: "application/json" },
+			});
+			if (response.ok) {
+				window.location.href = "/contact?sent=1";
+				return;
+			}
+			throw new Error(`HTTP ${response.status}`);
+		} catch {
+			window.location.href = "/contact?error=send";
+		}
+	});
+</script>

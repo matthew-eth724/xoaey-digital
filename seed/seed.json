@@ -1,0 +1,337 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "Xoaey Digital",
+		"description": "Digital service agency: business automations and website design",
+		"author": "Xoaey Digital"
+	},
+	"settings": {
+		"title": "Xoaey Digital",
+		"tagline": "Business automations & website design for small businesses"
+	},
+	"collections": [
+		{
+			"slug": "posts",
+			"label": "Posts",
+			"labelSingular": "Post",
+			"urlPattern": "/posts/{slug}",
+			"supports": ["drafts", "revisions", "preview", "scheduling", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image"
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "excerpt",
+					"label": "Excerpt",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"urlPattern": "/{slug}",
+			"supports": ["drafts", "revisions", "preview", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		},
+		{
+			"slug": "inquiries",
+			"label": "Inquiries",
+			"labelSingular": "Inquiry",
+			"description": "Contact form submissions. New enquiries arrive as drafts.",
+			"routable": false,
+			"supports": ["drafts", "search"],
+			"titleField": "name",
+			"admin": {
+				"listColumns": ["email", "service"]
+			},
+			"fields": [
+				{
+					"slug": "name",
+					"label": "Name",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "email",
+					"label": "Email",
+					"type": "string",
+					"required": true,
+					"searchable": true,
+					"validation": {
+						"pattern": "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"
+					}
+				},
+				{
+					"slug": "company",
+					"label": "Company",
+					"type": "string",
+					"searchable": true
+				},
+				{
+					"slug": "service",
+					"label": "Service",
+					"type": "select",
+					"required": true,
+					"validation": {
+						"options": ["automation", "website", "both"]
+					}
+				},
+				{
+					"slug": "budget",
+					"label": "Budget",
+					"type": "select",
+					"validation": {
+						"options": ["", "under-1k", "1-3k", "3-10k", "10k-plus"]
+					}
+				},
+				{
+					"slug": "message",
+					"label": "Message",
+					"type": "text",
+					"required": true,
+					"searchable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "category",
+			"label": "Categories",
+			"labelSingular": "Category",
+			"hierarchical": true,
+			"collections": ["posts"],
+			"terms": [
+				{
+					"slug": "general",
+					"label": "General"
+				},
+				{
+					"slug": "updates",
+					"label": "Updates"
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"label": "Tags",
+			"labelSingular": "Tag",
+			"hierarchical": false,
+			"collections": ["posts"],
+			"terms": [
+				{
+					"slug": "automation",
+					"label": "Automation"
+				},
+				{
+					"slug": "web-design",
+					"label": "Web design"
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Home",
+					"url": "/"
+				},
+				{
+					"type": "custom",
+					"label": "Business Automations",
+					"url": "/services/business-automations"
+				},
+				{
+					"type": "custom",
+					"label": "Website Design",
+					"url": "/services/website-design"
+				},
+				{
+					"type": "page",
+					"label": "About",
+					"ref": "page-about",
+					"collection": "pages"
+				},
+				{
+					"type": "custom",
+					"label": "Contact",
+					"url": "/contact"
+				}
+			]
+		}
+	],
+	"widgetAreas": [
+		{
+			"name": "sidebar",
+			"label": "Sidebar",
+			"description": "Sidebar widget area",
+			"widgets": [
+				{
+					"type": "component",
+					"componentId": "core:search",
+					"title": "Search"
+				},
+				{
+					"type": "component",
+					"componentId": "core:categories",
+					"title": "Categories"
+				},
+				{
+					"type": "component",
+					"componentId": "core:recent-posts",
+					"title": "Recent Posts",
+					"props": {
+						"count": 5
+					}
+				}
+			]
+		}
+	],
+	"content": {
+		"pages": [
+			{
+				"id": "page-about",
+				"slug": "about",
+				"status": "published",
+				"data": {
+					"title": "About Xoaey Digital",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k0",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k1",
+									"text": "Xoaey Digital is a digital service agency for small businesses. We do two things, and we do them well: business automations that give you your week back, and website design that turns visitors into customers."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"_key": "k2",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k3",
+									"text": "Why we exist"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k4",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k5",
+									"text": "Most small businesses lose hours every week to work that shouldn't need a human: chasing leads, copying data between apps, sending reminders, updating a website that fights back. That work is invisible on a balance sheet, but you feel it every evening."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k6",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k7",
+									"text": "We started Xoaey Digital to fix exactly that — practical automation and honest web design, priced in plain numbers, explained without jargon."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"_key": "k8",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k9",
+									"text": "How we work"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k10",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k11",
+									"text": "Fixed prices agreed before we start. Everything built in your accounts, so you own it all. Plain-language documentation and training with every project. And we stick around afterwards on a light care plan if you want us to."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"_key": "k12",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k13",
+									"text": "What we won't do"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"_key": "k14",
+							"children": [
+								{
+									"_type": "span",
+									"_key": "k15",
+									"text": "Sell you software for commission. Lock you into tools you can't leave. Quote hourly and watch the meter run. If we're not the right fit, we'll say so and point you somewhere better."
+								}
+							]
+						}
+					]
+				}
+			}
+		]
+	}
+}
